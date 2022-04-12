@@ -1,0 +1,21 @@
+package com.firstcode.springi5steps;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ApplicationContext;
+
+@SpringBootApplication
+public class SpringI5StepsApplication {
+	//What are the brans?
+	//What are the dependencies pf a bean?
+	//Where to search for beans ? => No need
+	public static void main(String[] args) {
+		//BinarySearchImpl binarySearch =
+		// new BinarySearchImpl(new BubbleSortAlgorithm());
+		//Application Context
+		ApplicationContext applicationContext =
+				SpringApplication.run(SpringI5StepsApplication.class, args);
+		BinarySearchImpl binarySearch = applicationContext.getBean(BinarySearchImpl.class);
+		int result = binarySearch.binarySearch(new int[]{12,3},6);
+		System.out.println(result);
+	}
+}
