@@ -42,7 +42,9 @@ spring:
         show_sql: true
         use_sql_comments: false
         format_sql: false
+server:
+  error:
+    include-message: always
 logging:
   pattern:
     console: "%d{yyyy-MM-dd HH:mm:ss} ${LOG_LEVEL_PATTERN:-%5p} %m%n"
-
