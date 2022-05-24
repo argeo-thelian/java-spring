@@ -3,6 +3,9 @@ package com.arthe.store.customerservice.controller;
 import com.arthe.store.customerservice.repository.entity.Customer;
 import com.arthe.store.customerservice.repository.entity.Region;
 import com.arthe.store.customerservice.service.CustomerService;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -13,7 +16,11 @@ import org.springframework.web.server.ResponseStatusException;
 
 import javax.validation.Valid;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 @Slf4j
 @RestController
@@ -69,8 +76,53 @@ public class CustomerRest {
     }
 
     //Update a Customer
+    @PutMapping( value = "/{id}")
+    public ResponseEntity<?> updateCustomer(@PathVariable("id") Long id, @RequestBody Customer customer){
+        log.info("Updateing Customer with i {}", id);
 
+        Customer currentCustomer = customerService.getCustomer(id);
+        if( null == currentCustomer){
+            log.error("Unable to update. Cutomer with id {} not found", id);
+            return ResponseEntity.notFound().build();
+        }
+        customer.setId(id);
+        currentCustomer = customerService.updateCustomer(customer);
+        return ResponseEntity.ok(currentCustomer);
+    }
+
+
+    //Delete a Customer
+
+    @DeleteMapping( value = "/{id}")
+    public ResponseEntity<Customer> deleteCustomer(@PathVariable( "id" ) Long id){
+        log.info("Fetching & Deleting Customer with id {} ", id);
+        Customer customer = customerService.getCustomer(id);
+        if( null == customer){
+            log.error("Unable to delete. Customer with id {} not found.", id);
+            return ResponseEntity.notFound().build();
+        }
+        customer = customerService.deleteCustomer(customer);
+        return ResponseEntity.ok(customer);
+    }
 
     private String formatMessage(BindingResult result) {
+        List<Map<String, String>> errors = result.getFieldErrors().stream()
+            .map(err ->{
+                Map<String, String> error = new HashMap<>();
+                error.put(err.getField(), err.getDefaultMessage());
+                return error;
+            }).collect(Collectors.toList());
+        ErrorMessage errorMessage = ErrorMessage.builder()
+            .code("01")
+            .messages(errors).build();
+        ObjectMapper mapper = new ObjectMapper();
+        String jsonString = "";
+
+        try {
+            jsonString = mapper.writeValueAsString(errorMessage);
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
+        return jsonString;         
     }
 }
