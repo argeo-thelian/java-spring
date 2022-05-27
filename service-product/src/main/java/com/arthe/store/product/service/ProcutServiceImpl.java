@@ -14,7 +14,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class ProcutServiceImpl implements ProductService {
 
-    //@Autowired
+    @Autowired
     private final ProductRepository productRepository;
 
     @Override

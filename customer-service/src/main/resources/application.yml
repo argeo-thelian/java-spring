@@ -43,7 +43,7 @@ spring:
         use_sql_comments: false
         format_sql: false
 server:
-  port: 8082
+  port: 8081
   error:
     include-message: always
 logging:

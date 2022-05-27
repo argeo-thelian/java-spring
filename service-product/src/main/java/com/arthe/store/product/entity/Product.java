@@ -22,12 +22,19 @@ public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @NotEmpty( message = "El nombre del campo no debe ser vacío.")
+
+    @NotEmpty( message = "El nombre del campo no debe ser vacío." )
+    @Column( name = "name", nullable = false )
     private String name;
+    
+    
     private String description;
+    
     @Positive( message = "El stock debe ser mayor que cero.")
     private Double stock;
+
     private Double price;
+    
     private String status;
 
     @Column( name = "create_at" )

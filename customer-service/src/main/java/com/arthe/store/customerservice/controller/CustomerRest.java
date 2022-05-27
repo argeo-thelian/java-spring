@@ -19,7 +19,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 @Slf4j
@@ -90,9 +89,7 @@ public class CustomerRest {
         return ResponseEntity.ok(currentCustomer);
     }
 
-
     //Delete a Customer
-
     @DeleteMapping( value = "/{id}")
     public ResponseEntity<Customer> deleteCustomer(@PathVariable( "id" ) Long id){
         log.info("Fetching & Deleting Customer with id {} ", id);
@@ -123,6 +120,6 @@ public class CustomerRest {
         } catch (JsonProcessingException e) {
             e.printStackTrace();
         }
-        return jsonString;         
+        return jsonString.replace("\"","'");         
     }
 }
