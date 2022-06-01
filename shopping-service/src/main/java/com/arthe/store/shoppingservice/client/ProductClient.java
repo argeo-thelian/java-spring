@@ -14,10 +14,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 public interface ProductClient {
     
     @GetMapping( value = "/{id}" )
-    public ResponseEntity<Product> getProduct(@PathVariable("id") Long id);
+    public ResponseEntity<Product> getProduct( @PathVariable("id") Long id );
     
     @GetMapping( value = "/{id}/stock" )
-    public ResponseEntity<Product> updateStockProduct(@PathVariable("id") Long id, @RequestParam( name = "quantity", required = true ) Double quantity);
+    public ResponseEntity<Product> updateStockProduct( @PathVariable("id") Long id, 
+                                                    @RequestParam( name = "quantity", required = true ) Double quantity );
 
 
 }
