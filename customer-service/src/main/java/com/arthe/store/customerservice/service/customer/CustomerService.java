@@ -1,4 +1,4 @@
-package com.arthe.store.customerservice.service;
+package com.arthe.store.customerservice.service.customer;
 
 import com.arthe.store.customerservice.repository.entity.Customer;
 import com.arthe.store.customerservice.repository.entity.Region;

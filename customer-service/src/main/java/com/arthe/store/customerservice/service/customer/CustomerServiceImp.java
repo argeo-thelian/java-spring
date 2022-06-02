@@ -1,8 +1,9 @@
-package com.arthe.store.customerservice.service;
+package com.arthe.store.customerservice.service.customer;
 
 import com.arthe.store.customerservice.repository.CustomerRepository;
 import com.arthe.store.customerservice.repository.entity.Customer;
 import com.arthe.store.customerservice.repository.entity.Region;
+
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
