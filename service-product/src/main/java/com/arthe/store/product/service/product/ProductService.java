@@ -1,4 +1,4 @@
-package com.arthe.store.product.service;
+package com.arthe.store.product.service.product;
 
 import com.arthe.store.product.entity.Category;
 import com.arthe.store.product.entity.Product;

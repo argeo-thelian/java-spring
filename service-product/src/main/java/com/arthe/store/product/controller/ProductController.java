@@ -2,7 +2,7 @@ package com.arthe.store.product.controller;
 
 import com.arthe.store.product.entity.Category;
 import com.arthe.store.product.entity.Product;
-import com.arthe.store.product.service.ProductService;
+import com.arthe.store.product.service.product.ProductService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;

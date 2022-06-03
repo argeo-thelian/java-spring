@@ -1,8 +1,9 @@
-package com.arthe.store.product.service;
+package com.arthe.store.product.service.product;
 
 import com.arthe.store.product.entity.Category;
 import com.arthe.store.product.entity.Product;
 import com.arthe.store.product.repository.ProductRepository;
+
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,7 +13,7 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
-public class ProcutServiceImpl implements ProductService {
+public class ProductServiceImpl implements ProductService {
 
     @Autowired
     private final ProductRepository productRepository;

@@ -3,8 +3,9 @@ package com.arthe.store.product;
 import com.arthe.store.product.entity.Category;
 import com.arthe.store.product.entity.Product;
 import com.arthe.store.product.repository.ProductRepository;
-import com.arthe.store.product.service.ProcutServiceImpl;
-import com.arthe.store.product.service.ProductService;
+import com.arthe.store.product.service.product.ProductService;
+import com.arthe.store.product.service.product.ProductServiceImpl;
+
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -27,7 +28,7 @@ public class ProductServiceMockTest {
     @BeforeEach
     public void setuo(){
         MockitoAnnotations.openMocks(this);
-        productService = new ProcutServiceImpl(productRepository);
+        productService = new ProductServiceImpl(productRepository);
         Product computer = Product.builder()
                 .id(1L)
                 .name("computer")
