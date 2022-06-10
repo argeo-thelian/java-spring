@@ -1,5 +1,5 @@
 server:
-  port: 8099
+  port: 8761
 
 eureka:
   instance:
@@ -11,3 +11,9 @@ eureka:
       defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
     server:
       waitTimeInMsWhenSyncEmpty: 0    #wait time for subsequent sync
+logging:
+  level:
+    com:  
+      netflix: 
+        eureka: OFF
+        discovery: OFF
