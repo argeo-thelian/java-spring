@@ -1,12 +1,85 @@
+#================================= .properties
+# DB
+#================================
+#spring.datasource.url=jdbc:h2:mem:testdb
+#spring.datasource.username=sa
+#spring.datasource.password=
+#spring.datasource.driverClassName=org.h2.Driver
+#spring.jpa.database-platform=org.hibernate.dialect.H2Dialect
+#
+#spring.h2.console.enabled=true
+#spring.h2.console.path=/h2-console
+#spring.h2.console.settings.trace=false
+#spring.h2.console.settings.web-allow-others=false
+#
+#spring.jpa.hibernate.ddl-auto=none
+# To See h2 console in Browser:
+# http://localhost:8091/h2-console
+# Enabling H2 Console
+
+# ========================== New
+# Applicación Configuracion
+# ==========================
+server:
+  port: 8091
+
+# To See H2 console in Browser:
+# http://localhost:8092/h2-console
+# Enabling H2 Console
 spring:
-  application:
-    name: product-service
-  cloud:
-    config:
-      uri: http://localhost:8081
-      username: root
-      password: s3cr3t
-  boot:
-    admin:
-      client:
-        url: http://localhost:8086
+  h2:
+    console:
+      enabled: true
+  #================================= .yml
+  # DB
+  #================================
+  # jdbc:h2:mem:productDB;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+  datasource:
+    url: jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+    driverClassName: org.h2.Driver
+    platform: h2
+    username: sa
+    password:
+#================================= .yml
+# JPA / HIBERNATE
+#================================
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+    database-platform: org.hibernate.dialect.H2Dialect
+    properties:
+      hibernate:
+        show_sql: true
+        use_sql_comments: false
+        format_sql: false
+
+# #====================================
+# # Applicaciones SPRING / Service
+# #====================================
+# application:
+#   name: product-service
+# cloud:
+#   config:
+#     uri: http://localhost:8081
+#     username: root
+#     password: s3cr3t
+# boot:
+#   admin:
+#     client:
+#       url: http://localhost:8086
+
+# ======================= New 
+# Logging
+# =======================
+logging:
+ pattern:
+  console: "%d{yyyy-MM-dd HH:mm:ss} ${LOG_LEVEL_PATTERN:-%5p} %m%n"
+
+# ===================== New Course
+# Eureka
+# =====================
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8099/eureka/
