@@ -14,7 +14,6 @@ import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import java.lang.annotation.Documented;
 import java.util.Optional;
 
 @SpringBootTest
