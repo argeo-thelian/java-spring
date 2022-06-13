@@ -79,7 +79,6 @@ public class InvoiceServiceImpl implements InvoiceService{
 
     @Override
     public Invoice getInvoice(Long id) {
-
         Invoice invoice= invoiceRepository.findById(id).orElse(null);
         if (null != invoice ){
             Customer customer = customerClient.getCustomer(invoice.getCustomerId()).getBody();
